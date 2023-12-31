@@ -233,4 +233,62 @@ public class LoggerImpl implements Logger {
 }
 
 
-Q-2
+Q-2 Connection Pool
+
+package com.assignment.question;
+
+public class ConnectionPoolImpl implements ConnectionPool {
+
+    private static ConnectionPoolImpl instance;
+    private int maxConn;
+    private int totalConn = 0;
+
+
+    private ConnectionPoolImpl(int totalConn, int maxConn){
+        this.totalConn = totalConn;
+        this.maxConn = maxConn;
+    }
+
+    @Override
+    public void initializePool() {
+
+    }
+
+    @Override
+    public DatabaseConnection getConnection() {
+        return null;
+    }
+
+    @Override
+    public void releaseConnection(DatabaseConnection connection) {
+
+    }
+
+    @Override
+    public int getAvailableConnectionsCount() {
+        return 0;
+    }
+
+    @Override
+    public int getTotalConnectionsCount() {
+        return 0;
+    }
+
+    public static ConnectionPoolImpl getInstance(int maxConnections){
+         // TODO Auto-generated method stub
+        if (instance == null) {
+            synchronized (ConnectionPoolImpl.class) {
+                if (instance == null) {
+                    instance = new ConnectionPoolImpl(0, maxConnections);
+                }
+            }
+        }
+
+        return instance;
+    }
+
+    public static void resetInstance() {
+        // TODO Auto-generated method stub
+        instance  = null;
+    }
+}
