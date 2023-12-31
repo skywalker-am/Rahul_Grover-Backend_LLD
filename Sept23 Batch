@@ -1,1 +1,148 @@
 
+package com.assignment.question;
+
+import org.springframework.boot.logging.LogLevel;
+
+public class LoggerImpl implements Logger {
+    private static Logger instance;
+    private String fp;
+    private PrintWriter logWriter;
+
+    private LoggerImpl() {
+    }
+
+    @Override
+    public void log(LogLevel level, String message) {
+        if (logWriter == null) {
+            throw new IllegalStateException(“Logger not initialized. Call setLogFile method to do so.”);
+        }
+        
+        String logEntry = "TimeStamp: " + LocalDateTime.now() + "\nLog Level: " + level.name() + "\nMessage: " + message;
+        logWriter.println(logEntry);
+    }
+
+    @Override
+    public void setLogFile(String filePath) {
+      
+       try {
+            fp = filePath;
+            logWriter = new PrintWriter(new FileWriter(fp, true));
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.out.println(“Invalid file path!”);
+        }
+    }
+
+    @Override
+    public String getLogFile() {
+       if (logWriter == null) {
+            throw new IllegalStateException(“Logger not initialized. Call setLogFile method to do so.”);
+        }
+        return fp;
+    }
+
+    @Override
+    public void flush() {
+        logWriter.flush();
+    }
+
+    @Override
+    public void close() {
+        logWriter.close();
+    }
+
+    public static Logger getInstance() {
+        // TODO Auto-generated method stub
+        if (instance == null) {
+            synchronized (LoggerImpl.class) {
+                if (instance == null) {
+                    instance = new LoggerImpl();
+                }
+            }
+        }
+
+        return instance;
+    }
+
+    public static void resetInstance() {
+        // TODO Auto-generated method stub
+        instance  = null;
+    }
+}
+
+
+
+version2
+
+package com.assignment.question;
+
+import org.springframework.boot.logging.LogLevel;
+import java.io.*;
+import java.time.LocalDateTime;
+
+public class LoggerImpl implements Logger {
+    private static LoggerImpl instance;
+    private String fp;
+    private PrintWriter logWriter;
+
+    private LoggerImpl() {
+    }
+
+    @Override
+    public void log(LogLevel level, String message) {
+        if (logWriter == null) {
+            throw new IllegalStateException(“Logger not initialized. Call setLogFile method to do so.”);
+        }
+        
+        String logEntry = "TimeStamp: " + LocalDateTime.now() + "\nLog Level: " + level.name() + "\nMessage: " + message;
+        logWriter.println(logEntry);
+    }
+
+    @Override
+    public void setLogFile(String filePath) {
+      
+       try {
+            fp = filePath;
+            logWriter = new PrintWriter(new FileWriter(fp, true));
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.out.println(“Invalid file path!”);
+        }
+    }
+
+    @Override
+    public String getLogFile() {
+       if (logWriter == null) {
+            throw new IllegalStateException(“Logger not initialized. Call setLogFile method to do so.”);
+        }
+        return fp;
+    }
+
+    @Override
+    public void flush() {
+        logWriter.flush();
+    }
+
+    @Override
+    public void close() {
+        logWriter.close();
+    }
+
+    public static LoggerImpl getInstance() {
+        // TODO Auto-generated method stub
+        if (instance == null) {
+            synchronized (LoggerImpl.class) {
+                if (instance == null) {
+                    instance = new LoggerImpl();
+                }
+            }
+        }
+
+        return instance;
+    }
+
+    public static void resetInstance() {
+        // TODO Auto-generated method stub
+        instance  = null;
+    }
+}
