@@ -8,7 +8,7 @@ public class Client {
         b.changeSize(21);
         b.setText("This is text update");
 
-        Flutter flutter = new FlutterAndroid();
+        Flutter flutter = new FlutterI();
         Button b = flutter.createButton();
         b.changeSize(21);
         b.setText("This is text update");   
