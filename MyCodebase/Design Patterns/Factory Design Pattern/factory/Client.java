@@ -6,11 +6,11 @@ public class Client {
         Flutter flutter = new FlutterAndroid();
         Button b = flutter.createButton();
         b.changeSize(21);
-        b.setText("This is text update");
+        b.setText("This is Android text update");
 
-        Flutter flutter = new FlutterI();
+        Flutter flutter = new FlutterIos();
         Button b = flutter.createButton();
-        b.changeSize(21);
-        b.setText("This is text update");   
+        b.changeSize(51);
+        b.setText("This is Ios text update");   
     }
 }
