@@ -3,7 +3,7 @@ package factory;
 public class Client {
     public static void main(String[] args) {
 
-        Flutter flutter = new Flutter();
+        Flutter flutter = new ();
 
         Button b = flutter.createButton("Android");
 
