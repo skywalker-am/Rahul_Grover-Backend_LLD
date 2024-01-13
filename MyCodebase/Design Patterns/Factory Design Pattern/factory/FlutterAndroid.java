@@ -2,7 +2,7 @@
 package factory;
 
 public class FlutterAndroid extends Flutter{
-  public UIFactory createUiFactory() {
+  public Button createButton() {
     return new AndroidUiFactory();
   }
 }
