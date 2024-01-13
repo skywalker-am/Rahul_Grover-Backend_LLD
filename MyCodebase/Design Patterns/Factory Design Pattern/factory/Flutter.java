@@ -11,6 +11,5 @@ public abstract class Flutter {
     }
 
     // Factory method  -> Respo
-    abstract public UIFactory createUiFactory();
-
+    abstract public Button createButton();
 }
