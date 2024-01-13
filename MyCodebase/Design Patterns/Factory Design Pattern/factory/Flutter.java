@@ -10,6 +10,9 @@ public abstract class Flutter {
         System.out.printf("Set refresh rate as %s", freq);
     }
 
-    // Factory method  -> Respo
+    // Factory method
     abstract public Button createButton();
+
+    // Factory method
+    abstract public Dropdown createDropdown();
 }
